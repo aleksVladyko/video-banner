@@ -6,8 +6,8 @@ import { findLastDigitIndex, parsePhoneNumber } from '../helpers/helpers'
 import validatePhone from '../helpers/validatePhone'
 import { useMask } from '@react-input/mask'
 import CheckBox from '../components/ui/CheckBox'
-import PhoneButton, { btnStyle } from '../components/ui/PhoneButton'
 import ErrorNumber from '../components/ui/ErrorNumber'
+import Keyboard from '../components/ui/Keyboard'
 
 const BannerPhone = () => {
   const dispatch = useDispatch()
@@ -138,23 +138,12 @@ const BannerPhone = () => {
         </span>
       </fieldset>
       <div className="grid grid-cols-[repeat(3,88px)] gap-[10px] py-5 ">
-        {numberButtons.map((number) => (
-          <button
-            key={number}
-            ref={buttonRef[number]}
-            className={btnStyle}
-            type="button"
-            onClick={() => handleNumberButtonClick(number)}
-          >
-            {number}
-          </button>
-        ))}
-        <PhoneButton
+        <Keyboard
+          numberButtons={numberButtons}
+          handleNumberButtonClick={handleNumberButtonClick}
           handleEraseButtonClick={handleEraseButtonClick}
-          className="col-span-2"
-        >
-          backspace
-        </PhoneButton>
+          buttonRef={buttonRef}
+        />
       </div>
 
       {isErrorShown ? (

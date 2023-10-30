@@ -7,7 +7,7 @@ export type Props = {
   onClose?: () => void | undefined
   openModal?: () => void | undefined
   onClick?: () => void | undefined
-  handleEraseButtonClick?: () => void | string
+  handleEraseButtonClick?: () => void 
   ref?: React.RefObject<HTMLButtonElement>
 }
 export type SubmitForm = {
@@ -19,4 +19,10 @@ export type ButtonRef = {
 export type ValidationResponse = {
   valid: boolean
   line_type: string
+}
+export type KeyboardProps = {
+  numberButtons?: string[]
+  buttonRef: ButtonRef
+  handleNumberButtonClick: (number: string) => void 
+  handleEraseButtonClick: () => void
 }
